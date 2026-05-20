@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { buildPostUrl } from "@/lib/task-data";
 import { normalizeCategory, isValidCategory } from "@/lib/categories";
@@ -12,10 +12,16 @@ type Props = {
   task: TaskKey;
   initialPosts: SitePost[];
   category?: string;
+  horizontal?: boolean;
+  verticalScrollable?: boolean;
 };
 
-export function TaskListClient({ task, initialPosts, category }: Props) {
-  const localPosts = getLocalPostsForTask(task);
+export function TaskListClient({ task, initialPosts, category, horizontal, verticalScrollable }: Props) {
+  const [localPosts, setLocalPosts] = useState<SitePost[]>([]);
+
+  useEffect(() => {
+    setLocalPosts(getLocalPostsForTask(task));
+  }, [task]);
 
   const merged = useMemo(() => {
     const bySlug = new Set<string>();
@@ -56,6 +62,42 @@ export function TaskListClient({ task, initialPosts, category }: Props) {
     return (
       <div className="rounded-2xl border border-dashed border-border p-10 text-center text-muted-foreground">
         No posts yet for this section.
+      </div>
+    );
+  }
+
+  if (horizontal) {
+    return (
+      <div className="overflow-x-auto pb-2">
+        <div className="flex min-w-max gap-5">
+          {merged.map((post) => {
+            const localOnly = (post as any).localOnly;
+            const href = localOnly
+              ? `/local/${task}/${post.slug}`
+              : buildPostUrl(task, post.slug);
+            return (
+              <div key={post.id} className="w-[320px] shrink-0 sm:w-[360px] lg:w-[390px]">
+                <TaskPostCard post={post} href={href} taskKey={task} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  if (verticalScrollable) {
+    return (
+      <div className="max-h-[78vh] overflow-y-auto pr-1">
+        <div className="flex flex-col gap-5">
+          {merged.map((post) => {
+            const localOnly = (post as any).localOnly;
+            const href = localOnly
+              ? `/local/${task}/${post.slug}`
+              : buildPostUrl(task, post.slug);
+            return <TaskPostCard key={post.id} post={post} href={href} taskKey={task} />;
+          })}
+        </div>
       </div>
     );
   }

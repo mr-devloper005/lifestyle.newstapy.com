@@ -4,7 +4,7 @@ import { SITE_CONFIG } from '@/lib/site-config'
 
 const footerLinks = {
   products: [
-    { name: 'Pricing Plans', href: '/pricing' },
+    { name: 'Contact Sales', href: '/contact' },
     { name: 'Agency Discount Program', href: '/agency-discount' },
     { name: 'Writing Services', href: '/writing-services' },
     { name: 'Affiliate Program', href: '/affiliate' },

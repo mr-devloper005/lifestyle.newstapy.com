@@ -101,11 +101,11 @@ export default function CreatePressReleasePage() {
               Your press release has been successfully submitted for review. Our team will review it and contact you shortly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/press" className="newsnavipress-button-primary">
+              <Link href="/updates" className="newsnavipress-button-primary">
                 View All Press Releases
               </Link>
-              <Link href="/pricing" className="newsnavipress-button-secondary">
-                Upgrade Distribution Plan
+              <Link href="/contact" className="newsnavipress-button-secondary">
+                Contact Team
               </Link>
             </div>
           </div>
@@ -448,7 +448,7 @@ export default function CreatePressReleasePage() {
         "@type": "WebPage",
         "name": "Create Press Release - NewsNaviPress",
         "description": "Create and distribute your press release with NewsNaviPress. Reach thousands of media outlets and journalists worldwide.",
-        "url": `${SITE_CONFIG.baseUrl}/press/create`,
+        "url": `${SITE_CONFIG.baseUrl}/updates`,
         "mainEntity": {
           "@type": "Service",
           "name": "Press Release Creation Service",

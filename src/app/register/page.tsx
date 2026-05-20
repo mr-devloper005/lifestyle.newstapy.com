@@ -1,10 +1,15 @@
+'use client'
+
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Bookmark, Building2, FileText, Image as ImageIcon, Sparkles } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 import { getProductKind } from '@/design/factory/get-product-kind'
 import { REGISTER_PAGE_OVERRIDE_ENABLED, RegisterPageOverride } from '@/overrides/register-page'
+import { useAuth } from '@/lib/auth-context'
 
 function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
   if (kind === 'directory') {
@@ -61,9 +66,21 @@ export default function RegisterPage() {
   }
 
   const { recipe } = getFactoryState()
+  const router = useRouter()
+  const { signup, isLoading } = useAuth()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [intent, setIntent] = useState('')
   const productKind = getProductKind(recipe)
   const config = getRegisterConfig(productKind)
   const Icon = config.icon
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    await signup(name || intent || 'User', email, password)
+    router.push('/')
+  }
 
   return (
     <div className={`min-h-screen ${config.shell}`}>
@@ -83,12 +100,12 @@ export default function RegisterPage() {
 
           <div className={`rounded-[2rem] p-8 ${config.panel}`}>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] opacity-70">Create account</p>
-            <form className="mt-6 grid gap-4">
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Full name" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Email address" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Password" type="password" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="What are you creating or publishing?" />
-              <button type="submit" className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold ${config.action}`}>Create account</button>
+            <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
+              <input value={name} onChange={(e) => setName(e.target.value)} className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Full name" required />
+              <input value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Email address" type="email" required />
+              <input value={password} onChange={(e) => setPassword(e.target.value)} className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Password" type="password" required />
+              <input value={intent} onChange={(e) => setIntent(e.target.value)} className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="What are you creating or publishing?" />
+              <button disabled={isLoading} type="submit" className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold disabled:opacity-60 ${config.action}`}>{isLoading ? 'Creating...' : 'Create account'}</button>
             </form>
             <div className={`mt-6 flex items-center justify-between text-sm ${config.muted}`}>
               <span>Already have an account?</span>

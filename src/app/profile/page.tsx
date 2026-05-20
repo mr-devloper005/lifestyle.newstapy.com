@@ -11,6 +11,8 @@ export const generateMetadata = () =>
     description: taskPageMetadata.profile.description,
   });
 
-export default function ProfilePage({ searchParams }: { searchParams?: { category?: string } }) {
-  return <TaskListPage task="profile" category={searchParams?.category} />;
+export default async function ProfilePage({ searchParams }: { searchParams?: Promise<{ category?: string | string[] }> }) {
+  const params = searchParams ? await searchParams : undefined;
+  const categoryParam = Array.isArray(params?.category) ? params?.category[0] : params?.category;
+  return <TaskListPage task="profile" category={categoryParam} />;
 }
