@@ -4,6 +4,12 @@ import { buildTaskMetadata } from '@/lib/seo'
 export const revalidate = 3
 export const generateMetadata = () => buildTaskMetadata('mediaDistribution')
 
-export default function UpdatesPage({ searchParams }: { searchParams?: { category?: string } }) {
-  return <TaskListPage task="mediaDistribution" category={searchParams?.category} />
+export default async function UpdatesPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ category?: string | string[] }>
+}) {
+  const params = searchParams ? await searchParams : undefined
+  const categoryParam = Array.isArray(params?.category) ? params?.category[0] : params?.category
+  return <TaskListPage task="mediaDistribution" category={categoryParam} />
 }

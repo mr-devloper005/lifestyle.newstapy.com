@@ -5,6 +5,8 @@ export const revalidate = 3;
 
 export const generateMetadata = () => buildTaskMetadata("org");
 
-export default function TeamPage({ searchParams }: { searchParams?: { category?: string } }) {
-  return <TaskListPage task="org" category={searchParams?.category} />;
+export default async function TeamPage({ searchParams }: { searchParams?: Promise<{ category?: string | string[] }> }) {
+  const params = searchParams ? await searchParams : undefined;
+  const categoryParam = Array.isArray(params?.category) ? params?.category[0] : params?.category;
+  return <TaskListPage task="org" category={categoryParam} />;
 }

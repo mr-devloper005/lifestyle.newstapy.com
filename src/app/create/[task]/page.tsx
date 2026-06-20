@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Plus, Save } from "lucide-react";
@@ -15,6 +15,7 @@ import { useAuth } from "@/lib/auth-context";
 import { CATEGORY_OPTIONS } from "@/lib/categories";
 import { SITE_CONFIG, type TaskKey } from "@/lib/site-config";
 import { addLocalPost } from "@/lib/local-posts";
+import type { SitePost } from "@/lib/site-connector";
 
 type Field = {
   key: string;
@@ -191,6 +192,53 @@ export default function CreateTaskPage() {
 
   const [values, setValues] = useState<Record<string, string>>({});
   const [uploadingPdf, setUploadingPdf] = useState(false);
+  const [backendPosts, setBackendPosts] = useState<SitePost[]>([]);
+  const [backendLoading, setBackendLoading] = useState(false);
+  const [backendError, setBackendError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (taskKey !== "article") return;
+    const apiBase =
+      process.env.NEXT_PUBLIC_MASTER_PANEL_URL ||
+      process.env.NEXT_PUBLIC_MASTER_API_URL;
+    const siteCode = process.env.NEXT_PUBLIC_SITE_CODE;
+    if (!apiBase || !siteCode) {
+      setBackendError("Backend connection variables are missing.");
+      return;
+    }
+
+    const controller = new AbortController();
+    const load = async () => {
+      try {
+        setBackendLoading(true);
+        setBackendError(null);
+        const url = `${apiBase.replace(/\/$/, "")}/api/v1/public/${siteCode}/feed?task=article&limit=5`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
+        });
+        if (!response.ok) {
+          setBackendError("Unable to load backend feed.");
+          return;
+        }
+        const json = (await response.json()) as {
+          success?: boolean;
+          data?: { posts?: SitePost[] };
+        };
+        setBackendPosts(Array.isArray(json?.data?.posts) ? json.data.posts : []);
+      } catch {
+        if (!controller.signal.aborted) {
+          setBackendError("Unable to reach backend feed.");
+        }
+      } finally {
+        if (!controller.signal.aborted) setBackendLoading(false);
+      }
+    };
+
+    load();
+    return () => controller.abort();
+  }, [taskKey]);
 
   if (!taskConfig || !formConfig) {
     return (
@@ -303,6 +351,29 @@ export default function CreateTaskPage() {
             <Badge variant="secondary">{taskConfig.label}</Badge>
             <Badge variant="outline">Local-only</Badge>
           </div>
+
+          {taskKey === "article" ? (
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
+                Backend Source
+              </p>
+              {backendLoading ? (
+                <p className="mt-2 text-sm text-slate-600">Loading latest article feedâ€¦</p>
+              ) : backendError ? (
+                <p className="mt-2 text-sm text-red-600">{backendError}</p>
+              ) : backendPosts.length ? (
+                <ul className="mt-2 space-y-1 text-sm text-slate-700">
+                  {backendPosts.map((post) => (
+                    <li key={post.id || post.slug} className="line-clamp-1">
+                      â€¢ {post.title}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm text-slate-600">No backend article items found.</p>
+              )}
+            </div>
+          ) : null}
 
           <div className="mt-6 grid gap-6">
             {formConfig.fields.map((field) => (

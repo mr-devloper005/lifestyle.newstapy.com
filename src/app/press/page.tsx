@@ -250,7 +250,7 @@ export default function PressReleasePage() {
                         By {release.author}
                       </div>
                       <Link 
-                        href={`/press/${release.slug}`}
+                        href={`/updates/${release.slug}`}
                         className="text-primary font-semibold inline-flex items-center hover:gap-2 transition-all"
                       >
                         Read Full Release
@@ -315,7 +315,7 @@ export default function PressReleasePage() {
                       {release.excerpt}
                     </p>
                     <Link 
-                      href={`/press/${release.slug}`}
+                      href={`/updates/${release.slug}`}
                       className="text-primary text-sm font-semibold inline-flex items-center hover:gap-2 transition-all"
                     >
                       Read More
@@ -347,12 +347,12 @@ export default function PressReleasePage() {
             Ready to share your news with the world? Get started with our professional press release distribution service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/press/create" className="newsnavipress-button-primary bg-white text-primary hover:bg-gray-100 inline-flex items-center justify-center">
+            <Link href="/updates" className="newsnavipress-button-primary bg-white text-primary hover:bg-gray-100 inline-flex items-center justify-center">
               Submit Press Release
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-            <Link href="/pricing" className="newsnavipress-button-secondary border-2 border-white text-white hover:bg-white hover:text-primary inline-flex items-center justify-center">
-              View Pricing
+            <Link href="/contact" className="newsnavipress-button-secondary border-2 border-white text-white hover:bg-white hover:text-primary inline-flex items-center justify-center">
+              Contact Team
             </Link>
           </div>
         </div>
@@ -364,7 +364,7 @@ export default function PressReleasePage() {
         "@type": "CollectionPage",
         "name": "Press Releases - NewsNaviPress",
         "description": "Browse the latest press releases and news announcements from our clients across various industries.",
-        "url": `${SITE_CONFIG.baseUrl}/press`
+        "url": `${SITE_CONFIG.baseUrl}/updates`
       }} />
     </div>
   )

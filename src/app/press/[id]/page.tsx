@@ -206,7 +206,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 
   return buildPageMetadata({
-    path: `/press/${params.id}`,
+    path: `/updates/${params.id}`,
     title: release.title,
     description: release.subtitle,
     openGraphTitle: release.title,
@@ -227,7 +227,7 @@ export default function PressReleasePage({ params }: { params: { id: string } })
           <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Press Release Not Found</h1>
             <p className="text-xl text-gray-600 mb-8">The press release you're looking for doesn't exist or has been removed.</p>
-            <Link href="/press" className="newsnavipress-button-primary">
+            <Link href="/updates" className="newsnavipress-button-primary">
               View All Press Releases
             </Link>
           </div>
@@ -247,7 +247,7 @@ export default function PressReleasePage({ params }: { params: { id: string } })
           <nav className="flex items-center gap-2 text-sm">
             <Link href="/" className="text-gray-600 hover:text-primary">Home</Link>
             <ChevronRight className="h-4 w-4 text-gray-400" />
-            <Link href="/press" className="text-gray-600 hover:text-primary">Press Releases</Link>
+            <Link href="/updates" className="text-gray-600 hover:text-primary">Press Releases</Link>
             <ChevronRight className="h-4 w-4 text-gray-400" />
             <span className="text-gray-900 font-medium">{release.title.substring(0, 50)}...</span>
           </nav>
@@ -358,7 +358,7 @@ export default function PressReleasePage({ params }: { params: { id: string } })
                     {article.excerpt}
                   </p>
                   <Link 
-                    href={`/press/${article.id}`}
+                    href={`/updates/${article.id}`}
                     className="text-primary font-semibold inline-flex items-center hover:gap-2 transition-all"
                   >
                     Read Full Release
@@ -379,12 +379,12 @@ export default function PressReleasePage({ params }: { params: { id: string } })
             Join thousands of businesses that trust NewsNaviPress for their press release distribution needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/press/create" className="newsnavipress-button-primary bg-white text-primary hover:bg-gray-100 inline-flex items-center justify-center">
+            <Link href="/updates" className="newsnavipress-button-primary bg-white text-primary hover:bg-gray-100 inline-flex items-center justify-center">
               Submit Your Press Release
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-            <Link href="/pricing" className="newsnavipress-button-secondary border-2 border-white text-white hover:bg-white hover:text-primary inline-flex items-center justify-center">
-              View Pricing Plans
+            <Link href="/contact" className="newsnavipress-button-secondary border-2 border-white text-white hover:bg-white hover:text-primary inline-flex items-center justify-center">
+              Contact Team
             </Link>
           </div>
         </div>
@@ -407,7 +407,7 @@ export default function PressReleasePage({ params }: { params: { id: string } })
           "name": "NewsNaviPress",
           "url": SITE_CONFIG.baseUrl
         },
-        "url": `${SITE_CONFIG.baseUrl}/press/${release.id}`
+        "url": `${SITE_CONFIG.baseUrl}/updates/${release.id}`
       }} />
     </div>
   )

@@ -1,7 +1,7 @@
 export const siteIdentity = {
   code: process.env.NEXT_PUBLIC_SITE_CODE || 'kvfbx7fz2h',
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'Lifestyle Newstapy',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Independent media updates',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || '',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
     'A media-distribution newsroom for announcements, coverage, and press updates on Lifestyle Newstapy.',

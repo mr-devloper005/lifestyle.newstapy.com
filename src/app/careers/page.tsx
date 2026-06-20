@@ -1,68 +1,63 @@
-import Link from "next/link";
-import { PageShell } from "@/components/shared/page-shell";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { SITE_CONFIG } from "@/lib/site-config";
-
-const roles = [
-  { title: "Product Designer", location: "Remote", type: "Full-time", level: "Mid" },
-  { title: "Frontend Engineer", location: "New York, NY", type: "Full-time", level: "Senior" },
-  { title: "Community Lead", location: "Remote", type: "Part-time", level: "Mid" },
-];
-
-const benefits = [
-  "Flexible schedules and remote-first culture",
-  "Health, dental, and vision coverage",
-  "Annual learning stipend",
-  "Quarterly offsites and team retreats",
-];
+import Link from 'next/link'
+import { ArrowRight, BriefcaseBusiness, Mail } from 'lucide-react'
+import { NavbarShell } from '@/components/shared/navbar-shell'
+import { FooterNewsNaviPressClean as Footer } from '@/components/shared/footer-clean'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 export default function CareersPage() {
   return (
-    <PageShell
-      title="Careers"
-      description={`Help us build the future of community-driven publishing at ${SITE_CONFIG.name}.`}
-      actions={
-        <Button asChild>
-          <Link href="/contact">Apply Now</Link>
-        </Button>
-      }
-    >
-      <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="space-y-4">
-          {roles.map((role) => (
-            <Card key={role.title} className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="secondary">{role.level}</Badge>
-                  <Badge variant="outline">{role.type}</Badge>
-                </div>
-                <h2 className="mt-3 text-lg font-semibold text-foreground">{role.title}</h2>
-                <p className="mt-1 text-sm text-muted-foreground">{role.location}</p>
-                <Button variant="outline" className="mt-4" asChild>
-                  <Link href="/contact">View Role</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <Card className="border-border bg-card">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground">Why {SITE_CONFIG.name}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              We are building a product that helps people discover and share the best knowledge on the web.
-            </p>
-            <div className="mt-4 space-y-2 text-sm text-muted-foreground">
-              {benefits.map((benefit) => (
-                <div key={benefit} className="rounded-md border border-border bg-secondary/40 px-3 py-2">
-                  {benefit}
-                </div>
-              ))}
+    <div className="min-h-screen bg-[#050608] text-white">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(246,182,15,0.12),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(210,20,104,0.14),transparent_45%),radial-gradient(circle_at_50%_100%,rgba(37,34,102,0.2),transparent_60%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px] opacity-35" />
+
+      <NavbarShell />
+
+      <main className="mx-auto max-w-6xl px-4 pb-20 pt-14 sm:px-6 lg:px-8">
+        <section className="rounded-3xl border border-white/15 bg-white/[0.04] p-8 text-center sm:p-12">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.34em] text-[#d41468]">Careers</p>
+          <h1 className="text-5xl font-black uppercase leading-[0.9] tracking-[-0.04em] sm:text-6xl">
+            We Are Not Hiring
+            <br />
+            <span className="text-[#f6b60f]">At The Moment</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-white/75 sm:text-lg">
+            Thank you for your interest in joining {SITE_CONFIG.name}. While we do not have open roles currently, we are always happy to hear from talented people.
+          </p>
+        </section>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-2">
+          <article className="rounded-2xl border border-white/15 bg-white/[0.04] p-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white/70">
+              <BriefcaseBusiness className="h-4 w-4 text-[#f6b60f]" />
+              Future Openings
             </div>
-          </CardContent>
-        </Card>
-      </div>
-    </PageShell>
-  );
+            <h2 className="mt-4 text-2xl font-black uppercase tracking-[-0.02em]">Want To Be Considered Later?</h2>
+            <p className="mt-3 text-sm leading-relaxed text-white/70">
+              Send us your profile, portfolio, and the role you are interested in. We will keep your details on file for upcoming opportunities.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-white/15 bg-white/[0.04] p-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white/70">
+              <Mail className="h-4 w-4 text-[#f6b60f]" />
+              Contact
+            </div>
+            <h2 className="mt-4 text-2xl font-black uppercase tracking-[-0.02em]">Send Your Details</h2>
+            <p className="mt-3 text-sm leading-relaxed text-white/70">
+              Share your resume and a short intro through our contact page, and our team will review it when relevant positions open.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-[#f6b60f] px-6 py-3 text-sm font-black uppercase tracking-[0.1em] text-black transition hover:bg-[#ffc83f]"
+            >
+              Go To Contact Page
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </article>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  )
 }

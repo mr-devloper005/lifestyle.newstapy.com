@@ -4,76 +4,76 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.985 0 0);
-  --foreground: oklch(0.15 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0 0);
-  --primary: #FA812F;
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: #DD0303;
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.5 0 0);
+  --background: #050608;
+  --foreground: #f6f7fb;
+  --card: #0e1016;
+  --card-foreground: #f3f5fb;
+  --popover: #10121a;
+  --popover-foreground: #f6f7fb;
+  --primary: #f6b60f;
+  --primary-foreground: #040507;
+  --secondary: #d41468;
+  --secondary-foreground: #ffffff;
+  --muted: #171a23;
+  --muted-foreground: #a5adbf;
   --accent: oklch(0.94 0.02 255);
   --accent-foreground: oklch(0.22 0.02 255);
-  --destructive: #DD0303;
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: #FA812F;
-  --chart-1: #FA812F;
-  --chart-2: #DD0303;
+  --destructive: #ff4f68;
+  --destructive-foreground: #08090c;
+  --border: rgba(255, 255, 255, 0.14);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #f6b60f;
+  --chart-1: #f6b60f;
+  --chart-2: #d41468;
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #FA812F;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: #FA812F;
-  --hero-gradient-start: #0891b2;
-  --hero-gradient-end: #0e7490;
+  --sidebar: #0b0d13;
+  --sidebar-foreground: #f5f7ff;
+  --sidebar-primary: #f6b60f;
+  --sidebar-primary-foreground: #07080b;
+  --sidebar-accent: #151924;
+  --sidebar-accent-foreground: #f4f6fd;
+  --sidebar-border: rgba(255, 255, 255, 0.14);
+  --sidebar-ring: #d41468;
+  --hero-gradient-start: #252266;
+  --hero-gradient-end: #d41468;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --background: #050608;
+  --foreground: #f6f7fb;
+  --card: #0e1016;
+  --card-foreground: #f3f5fb;
+  --popover: #10121a;
+  --popover-foreground: #f6f7fb;
+  --primary: #f6b60f;
+  --primary-foreground: #040507;
+  --secondary: #d41468;
+  --secondary-foreground: #ffffff;
+  --muted: #171a23;
+  --muted-foreground: #a5adbf;
+  --accent: #252266;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4f68;
+  --destructive-foreground: #08090c;
+  --border: rgba(255, 255, 255, 0.14);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #f6b60f;
+  --chart-1: #f6b60f;
+  --chart-2: #d41468;
+  --chart-3: #252266;
+  --chart-4: #f5532a;
+  --chart-5: #7c86ff;
+  --sidebar: #0b0d13;
+  --sidebar-foreground: #f5f7ff;
+  --sidebar-primary: #f6b60f;
+  --sidebar-primary-foreground: #07080b;
+  --sidebar-accent: #151924;
+  --sidebar-accent-foreground: #f4f6fd;
+  --sidebar-border: rgba(255, 255, 255, 0.14);
+  --sidebar-ring: #d41468;
 }
 
 @theme inline {
@@ -127,6 +127,11 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 18% 0%, rgba(246, 182, 15, 0.12), transparent 34%),
+      radial-gradient(circle at 80% 6%, rgba(210, 20, 104, 0.14), transparent 42%),
+      radial-gradient(circle at 48% 100%, rgba(37, 34, 102, 0.18), transparent 58%);
+    background-attachment: fixed;
   }
   #__next {
     overflow-x: hidden;
@@ -143,10 +148,10 @@
 }
 
 .factory-palette-newsnavipress {
-  --color-primary: #FA812F;
-  --color-secondary: #DD0303;
-  --color-accent: #FA812F;
-  --hero-gradient: linear-gradient(135deg, #FA812F 0%, #DD0303 100%);
+  --color-primary: #f6b60f;
+  --color-secondary: #d41468;
+  --color-accent: #252266;
+  --hero-gradient: linear-gradient(135deg, #252266 0%, #d41468 52%, #f6b60f 100%);
 }
 
 .factory-surface-newsnavipress {
@@ -161,8 +166,7 @@
 
 /* NewsNaviPress Specific Components */
 .newsnavipress-hero {
-  background: var(--hero-gradient), url('/press-release-hero.jpg') center/cover;
-  background-blend-mode: overlay;
+  background: var(--hero-gradient);
   position: relative;
   overflow: hidden;
 }
@@ -170,25 +174,37 @@
 .newsnavipress-hero::before {
   content: '';
   position: absolute;
-  bottom: -2px;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.45;
+}
+
+.newsnavipress-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
   left: 0;
   right: 0;
-  height: 80px;
-  background: white;
-  clip-path: ellipse(100% 100% at 50% 100%);
+  height: 48px;
+  background: linear-gradient(180deg, transparent 0%, rgba(5, 6, 8, 1) 100%);
 }
 
 .newsnavipress-card {
-  @apply bg-white rounded-lg shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl;
-  transform: var(--card-hover-transform);
+  @apply rounded-2xl border border-white/15 bg-white/[0.03] text-white transition-all duration-300;
+}
+
+.newsnavipress-card:hover {
+  @apply border-white/30 bg-white/[0.05];
+  transform: translateY(-4px);
 }
 
 .newsnavipress-button-primary {
-  @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:opacity-90 hover:shadow-lg transform hover:scale-105;
-  transform: var(--button-hover-transform);
+  @apply inline-flex items-center justify-center rounded-xl bg-[#f6b60f] px-6 py-3 font-bold uppercase tracking-[0.08em] text-black transition-all duration-300 hover:bg-[#ffc83f];
 }
 
 .newsnavipress-button-secondary {
-  @apply bg-secondary text-secondary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:opacity-90 hover:shadow-lg transform hover:scale-105;
-  transform: var(--button-hover-transform);
+  @apply inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/[0.03] px-6 py-3 font-bold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:bg-white/[0.08];
 }

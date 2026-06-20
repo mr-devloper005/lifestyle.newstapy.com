@@ -1,192 +1,77 @@
 import Link from 'next/link'
-import { FileText, Building2, Users, Globe2, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, Youtube, ArrowRight } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 
-const footerLinks = {
-  products: [
-    { name: 'Pricing Plans', href: '/pricing' },
-    { name: 'Agency Discount Program', href: '/agency-discount' },
-    { name: 'Writing Services', href: '/writing-services' },
-    { name: 'Affiliate Program', href: '/affiliate' },
-  ],
+const links = {
   company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Who Uses Us', href: '/who-uses-us' },
-    { name: 'Meet The Team', href: '/team' },
-  ],
-  resources: [
-    { name: 'Knowledge Base', href: '/help' },
-    { name: 'RSS', href: '/rss' },
-    { name: 'News Widget', href: '/widget' },
-    { name: 'For Journalists', href: '/journalists' },
-  ],
-  support: [
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'Content Guidelines', href: '/guidelines' },
-    { name: 'FAQs', href: '/faq' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Careers', href: '/careers' },
   ],
   legal: [
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
-    { name: 'Site Map', href: '/sitemap' },
+    { name: 'Cookies', href: '/cookies' },
   ],
 }
 
-const socialLinks = [
-  { name: 'Facebook', href: '#', icon: Facebook },
-  { name: 'Twitter', href: '#', icon: Twitter },
-  { name: 'LinkedIn', href: '#', icon: Linkedin },
-  { name: 'Pinterest', href: '#', icon: Globe2 },
-  { name: 'Instagram', href: '#', icon: Instagram },
-  { name: 'YouTube', href: '#', icon: Youtube },
-]
-
 export function FooterNewsNaviPressClean() {
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Main Footer Content */}
-      <div className="border-b border-gray-800">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-            
-            {/* Company Info */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">NP</span>
-                </div>
-                <div>
-                  <div className="text-xl font-bold">NewsNaviPress</div>
-                  <div className="text-sm text-gray-400">Professional Press Release Distribution</div>
-                </div>
-              </div>
+    <footer className="mt-16 border-t border-white/10 bg-black/65 text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:px-8">
+        <div>
+          <div className="mb-4 flex items-center gap-3">
+            <div className="grid h-10 w-10 place-items-center rounded-md bg-white text-black text-sm font-black">NP</div>
+            <div>
+              <p className="text-xl font-extrabold tracking-tight">{SITE_CONFIG.name}</p>
+              <p className="text-[10px] uppercase tracking-[0.22em] text-white/55">{SITE_CONFIG.tagline}</p>
+            </div>
+          </div>
+          <h3 className="max-w-xl text-4xl font-black uppercase leading-[0.94] tracking-[-0.03em]">
+            Build Distribution
+            <span className="text-[#d41468]"> That Converts.</span>
+          </h3>
+          <p className="mt-5 max-w-xl text-sm text-white/68">
+            Strategy, publishing, and visibility reporting crafted as one focused system for consistent media momentum.
+          </p>
+          <div className="mt-6 space-y-2 text-sm">
+            {/* <div className="inline-flex items-center gap-2 text-white/78">
+              <Phone className="h-4 w-4 text-[#f6b60f]" />
+              +1 888-880-9539
+            </div> */}
+            <div className="block" />
+            <div className="inline-flex items-center gap-2 text-white/78">
+              {/* <Mail className="h-4 w-4 text-[#f6b60f]" /> */}
               
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-3 text-gray-300">
-                  <Phone className="h-4 w-4" />
-                  <span>+1 888-880-9539</span>
-                </div>
-                <div className="text-sm text-gray-400">
-                  Telephone Hours: Monday to Friday 8:30am to 5:00pm Pacific (PDT)
-                </div>
-              </div>
-
-              <div className="space-y-2 mb-6">
-                <div className="flex items-center gap-3 text-gray-300">
-                  <Globe2 className="h-4 w-4" />
-                  <span className="text-sm">Suite 1400 - 506 Second Avenue</span>
-                </div>
-                <div className="text-sm text-gray-400 ml-7">
-                  Seattle, WA 98104, USA
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
-                    aria-label={social.name}
-                  >
-                    <social.icon className="h-5 w-5 text-gray-400 hover:text-white" />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Products Column */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Products</h3>
-              <ul className="space-y-3">
-                {footerLinks.products.map((link) => (
-                  <li key={link.href}>
-                    <Link 
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Company Column */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Company</h3>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.href}>
-                    <Link 
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources Column */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Resources</h3>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.href}>
-                    <Link 
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Support Column */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Support</h3>
-              <ul className="space-y-3">
-                {footerLinks.support.map((link) => (
-                  <li key={link.href}>
-                    <Link 
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="bg-gray-950">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-gray-400 text-sm">
-              © 2004-{new Date().getFullYear()} 24-7 Press Release Newswire. All Rights Reserved.
+        <div className="grid gap-6 rounded-3xl border border-white/15 bg-white/[0.03] p-6 sm:grid-cols-2">
+          <div>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-white/60">Company</p>
+            <div className="space-y-2">
+              {links.company.map((link) => (
+                <Link key={link.href} href={link.href} className="block text-sm text-white/75 transition hover:text-white">
+                  {link.name}
+                </Link>
+              ))}
             </div>
-            <div className="flex gap-6">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
-                >
+          </div>
+          <div>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-white/60">Legal</p>
+            <div className="space-y-2">
+              {links.legal.map((link) => (
+                <Link key={link.href} href={link.href} className="block text-sm text-white/75 transition hover:text-white">
                   {link.name}
                 </Link>
               ))}
             </div>
           </div>
         </div>
+      </div>
+      <div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
       </div>
     </footer>
   )
