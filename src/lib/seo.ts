@@ -261,6 +261,11 @@ export async function buildSiteMetadata(): Promise<Metadata> {
       description: siteDescription,
       images: [ctx.exact?.ogImage || ctx.defaultOgImage],
     },
+    icons: {
+      icon: [{ url: "/favicon.ico?v=20260520" }, { url: "/favicon.png?v=20260520", type: "image/png" }],
+      apple: [{ url: "/apple-icon.png?v=20260520" }],
+      shortcut: ["/favicon.ico?v=20260520"],
+    },
   };
 }
 

@@ -1,8 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
-import { Navbar } from "@/components/shared/navbar";
-import { NavbarNewsNaviPress } from "@/components/shared/navbar-newsnavipress";
+import { NavbarNewsNaviPress } from "./navbar-newsnavipress";
 
 export function NavbarShell() {
   return (

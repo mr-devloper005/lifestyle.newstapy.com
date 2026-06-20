@@ -202,16 +202,26 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(110, 26, 55, 0.25);
+  background: rgba(255, 255, 255, 0.22);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(110, 26, 55, 0.42);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.updates-category-select {
+  color-scheme: dark;
+  scrollbar-color: rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.08);
+}
+
+.updates-category-select option {
+  background-color: #0b0d12;
+  color: #ffffff;
 }
 
 .reading-progress {
